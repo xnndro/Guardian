@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Guardians</title>
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/style.min.css') }}" rel="stylesheet">
+   </head>
+
+<body>
+    <div class="main-wrapper">
+        <section class="vh-100" style="background-color: #1D4DB7;">
+            <div class="container py-5 h-100">
+              <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col col-5">
+                  <div class="card" style="border-radius: 1rem;">
+                    <div class="row g-0">
+                      <div class="col-md-12 col-lg-12 d-flex align-items-center">
+                        <div class="card-body p-4 p-lg-5 text-black">
+                          <form action="{{url_for('login')}}" method="POST">
+                            <div class="d-flex align-items-center mb-3 pb-1">
+                                <img src="{{url_for('static',filename='img/Guardians.png')}}" alt="homepage" class="dark-logo" />
+                            </div>
+          
+                            <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
+          
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="form2Example17">NIP</label>
+                                <input type="text" required name="nip"id="form2Example17" class="form-control form-control-lg" />
+                            </div>
+          
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="form2Example27">Password</label>
+                                <input type="password" required name="password" id="form2Example27" class="form-control form-control-lg" />
+                            </div>
+          
+                            <div class="pt-1 mb-4">
+                              <input class="btn btn-dark" type="submit" value="Login"></input>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+    </div>
+
+
+</body>
+
+</html>

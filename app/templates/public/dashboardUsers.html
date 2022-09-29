@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Guardians</title>
+    <link href="{{ url_for('static', filename='css/style.min.css') }}" rel="stylesheet">
+
+</head>
+
+<body>
+    
+    <!-- Main wrapper - style you can find in pages.scss -->
+    
+    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+        <!-- Topbar header - style you can find in pages.scss -->
+        <header class="topbar" data-navbarbg="skin6">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <div class="navbar-header" data-logobg="skin6">
+                    <!-- Logo -->      
+                    <a class="navbar-brand" href="{{url_for('home')}}">
+                        <!-- Logo icon -->
+                        <b class="logo-icon">
+                            <!-- Dark Logo icon -->
+                            <img src="{{url_for('static',filename='img/Guardians.png')}}"" alt="homepage" class="dark-logo" />
+                            <!-- <h5>Logo</h5> -->
+                        </b>
+                        <!--End Logo icon -->
+                        <!-- Logo text -->
+                        <span class="logo-text">
+                            <!-- dark Logo text -->
+                            <!-- <img src="../assets/images/logo-text.png" alt="homepage" class="dark-logo" /> -->
+                        </span>
+                    </a>
+                    <!-- End Logo -->
+                    <!-- This is for the sidebar toggle which is visible on mobile only -->
+                    <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
+                        <i class="mdi mdi-menu"></i>
+                    </a>
+                </div>
+                <!-- End Logo -->
+                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
+                    <!-- toggle and nav items -->
+                    <ul class="navbar-nav float-start me-auto">
+                    </ul>
+                    <!-- Right side toggle and nav items -->
+                    <ul class="navbar-nav float-end">
+                        <!-- User profile and search -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="{{url_for('static',filename='img/d2.jpg')}}" alt="user" class="rounded-circle" width="31">
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{url_for('logout')}}"><i class="ti-wallet m-r-5 m-l-5"></i>
+                                    Logout</a>
+                            </ul>
+                        </li>
+                        <!-- User profile and search -->
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- End Topbar header -->
+        
+    
+        <!-- Page wrapper  -->
+        <div class="container-fluid col-10">
+            <!-- Bread crumb and right sidebar toggle -->
+            <div class="page-breadcrumb">
+                <div class="row align-items-center">
+                    <div class="col-12">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mb-0 d-flex align-items-center">
+                              <li class="breadcrumb-item"><a href="{{url_for('home')}}" class="link"><i class="mdi mdi-home-outline fs-4"></i></a></li>
+                              <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                            </ol>
+                          </nav>
+                        <h1 class="mb-0 fw-bold">Dashboard</h1>
+                        <h3>Hello, {{usernames}}</h2>
+                    </div>
+                </div>
+            </div>
+            <!-- End Bread crumb and right sidebar toggle -->
+            
+            
+            <!-- Container fluid  -->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="card card-stats">
+                            <div class="card-body ">
+                                <div class="row">
+                                    <div class="col-7 col-md-8">
+                                        <div class="numbers">
+                                            <p class="card-category">Signature Registered</p>
+                                            {% if sign == 0 %}
+                                            <p class="card-title">0</p>
+                                            {% else %}
+                                            <p class="card-title">{{sgn}}<p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="card card-stats">
+                            <div class="card-body ">
+                                <div class="row">
+                                    <div class="col-7 col-md-8">
+                                        <div class="numbers">
+                                            <p class="card-category">Signature Comparison</p>
+                                            {% if sgn_cmp == 0%}
+                                            <p class="card-title">0</p>
+                                            {% else %}
+                                            <p class="card-title">{{sgn_cmp}}<p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <div class="card card-stats">
+                            <div class="card-body ">
+                                <div class="row">
+                                    <div class="col-7 col-md-8">
+                                        <div class="numbers">
+                                            <p class="card-category">Matched Signature</p>
+                                            {% if doc == 0 %}
+                                            <p class="card-title">0</p>
+                                            {% else %}
+                                            <p class="card-title">{{doc}}<p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Table -->
+                <div class="alert alert-primary d-flex align-items-center" role="alert">
+                    <div>
+                        <h4 class="alert-heading">How to validate your signature? </h4>
+                        1. Select the name of person that you want to check their signature <br>
+                        2. Upload/take picture of the signature <br>
+                        3. Click 'Check Signature!' <br>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 col-xlg-9 col-md-7">
+                        <div class="card">
+                            
+                            <div class="card-body">
+                                <div class="d-flex flex-row mt-3">
+                                    <div class="col-6">
+                                        <div class="card-title">
+                                            <h2>Signature Validation</h2>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="float-end">
+                                            <form action="{{url_for('start_camera')}}" method="POST">
+                                                <input type="submit" value="Open Camera" name="opencam" class="btn btn-danger text-white"></input>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <form class="form-horizontal form-material mx-2" action="{{url_for('upload_image')}}" method="POST" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <label class="col-sm-12">Select Person Name: </label>
+                                        <div class="col-sm-12">
+                                            <select name="selectName" required class="form-select shadow-none form-control-line">
+                                                <option selected>Choose...</option>
+                                                {% for i in range(0,lenKaryawan) %}
+                                                <option value="{{karyawan[i][0]}}">{{karyawan[i][0]}}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-12">Upload Signature</label>
+                                        <div class="col-sm-12">
+                                            <input type="file" required name="image" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <input type="submit" value="Compare!" name="checksign" class="btn btn-success text-white"></input>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-md-flex justify-content-between">
+                                    <div>
+                                        <h4 class="card-title">History of Comparison</h4>
+                                        
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table mb-0 table-hover align-middle text-nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th class="border-top-0">No.</th>
+                                                <th class="border-top-0">Compared Signature</th>
+                                                <th class="border-top-0">Result</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% if len == 0 %}
+                                            <tr>
+                                                <td colspan="3" class="text-center">No Data</td>
+                                            </tr>
+                                            {% else %}
+                                            <!-- using for to loop the data from history -->
+                                            {% for i in range(1, len+1) %}
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="ms-2">
+                                                            <h5 class="mb-0 fw-bold">{{i}}</h5>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="ms-2">
+                                                            <h5 class="mb-0 fw-bold">{{history[i-1][2]}}</h5>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="ms-2">
+                                                            <h5 class="mb-0 fw-bold">{{history[i-1][3]}}</h5>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                            {% endif %}
+                                           
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Container fluid  -->
+        </div>
+        <!-- End Page wrapper  -->
+    </div>
+    
+    <!-- End Wrapper -->
+    
+    
+  
+
+    <script src="{{url_for('static',filename='js/jquery.min.js')}}""></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="{{url_for('static',filename='js/bootstrap.bundle.min.js')}}"></script>
+</body>
+
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Guardians</title>
+    <link href="{{ url_for('static', filename='css/style.min.css') }}" rel="stylesheet">
+
+
+</head>
+
+<body>
+   
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+        data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+        <!-- Topbar header - style you can find in pages.scss -->
+        <header class="topbar" data-navbarbg="skin6">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <div class="navbar-header" data-logobg="skin6">
+                    <!-- Logo -->
+                    <a class="navbar-brand" href="{{url_for('admin_dashboard')}}">
+                        <!-- Logo icon -->
+                        <b class="logo-icon">
+                            <!-- Dark Logo icon -->
+                            <img src="{{url_for('static',filename='img/Guardians.png')}}" alt="homepage" class="dark-logo" />
+                        </b>
+                        <!--End Logo icon -->
+                        <!-- Logo text -->
+                        <span class="logo-text">
+                            <!-- dark Logo text -->
+                            <!-- <img src="../assets/images/logo-text.png" alt="homepage" class="dark-logo" /> -->
+                        </span>
+                    </a>
+                    <!-- End Logo -->
+                    <!-- This is for the sidebar toggle which is visible on mobile only -->
+                    <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i class="mdi mdi-menu"></i></a>
+                </div>
+                <!-- End Logo -->
+                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
+                    <!-- toggle and nav items -->
+                    <ul class="navbar-nav float-start me-auto"></ul>
+                    <!-- Right side toggle and nav items -->
+                    <ul class="navbar-nav float-end">
+                        <!-- User profile and search -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="{{url_for('static',filename='img/d2.jpg')}}" alt="user" class="rounded-circle" width="31">
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{url_for('logout')}}"><i class="ti-wallet m-r-5 m-l-5"></i>
+                                    Logout</a>
+                            </ul>
+                        </li>
+                        <!-- User profile and search -->
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- End Topbar header -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <aside class="left-sidebar" data-sidebarbg="skin6">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{url_for('admin_dashboard')}}" aria-expanded="false">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span class="hide-menu">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{url_for('admin_add')}}" aria-expanded="false">
+                                <i class="mdi mdi-border-all"></i>
+                                <span class="hide-menu">Add Signature</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{url_for('admin_compare')}}" aria-expanded="false">
+                                <i class="mdi mdi-face"></i>
+                                <span class="hide-menu">Compare Signature</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- Page wrapper  -->
+        <div class="page-wrapper">
+            <!-- Bread crumb and right sidebar toggle -->
+            <div class="page-breadcrumb">
+                <div class="row align-items-center">
+                    <div class="col-12">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mb-0 d-flex align-items-center">
+                              <li class="breadcrumb-item"><a href="{{url_for('admin_dashboard')}}" class="link"><i class="mdi mdi-home-outline fs-4"></i></a></li>
+                              <li class="breadcrumb-item active" aria-current="page">Add Signature</li>
+                            </ol>
+                          </nav>
+                        <h1 class="mb-0 fw-bold">Add Signature</h1> 
+                    </div>
+                </div>
+            </div>
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- Container fluid  -->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-xlg-9 col-md-7">
+                        <div class="card">
+                            <div class="card-body">
+                                <form class="form-horizontal form-material mx-2" action="{{url_for('admin_add_user')}}" method="POST" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <label class="col-md-12">Full Name</label>
+                                        <div class="col-md-12">
+                                            <input type="text" required placeholder="Johnathan Doe"
+                                                class="form-control form-control-line" name="namaKaryawan">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-12">Insert Signature File</label>
+                                        <div class="col-sm-12">
+                                            <input type="file" required class="form-control" name="signature">
+                                            <br>
+                                            <input type="file" required class="form-control" name="signature1">
+                                            <br>
+                                            <input type="file" required class="form-control" name="signature2">
+                                            <br>
+                                            <input type="file" required class="form-control" name="signature3">
+                                            <br>
+                                            <input type="file" required class="form-control" name="signature4">
+                                            <br>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-success text-white">Insert Signature</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Container fluid  -->
+        </div>
+        <!-- End Page wrapper  -->
+    </div>
+    <!-- End Wrapper -->
+   
+
+
+
+    <script src="{{url_for('static',filename='js/jquery.min.js')}}""></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="{{url_for('static',filename='js/bootstrap.bundle.min.js')}}"></script>
+</body>
+
+</html>
